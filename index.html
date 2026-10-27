@@ -16,7 +16,13 @@
 <main class="container">
   <section class="hero panel">
     <div><p class="eyebrow">DASHBOARD KENDALI</p><h2>Pemantauan sensor & aktuator</h2><p class="muted">Kalibrasi, pengaturan threshold, dan pengujian relay dalam satu dashboard.</p></div>
-    <div class="api-config"><label for="apiBase">Alamat API ESP32</label><div class="input-row"><input id="apiBase" value="http://192.168.4.1"><button id="saveApi" class="btn btn-primary">Hubungkan</button></div><small>Gunakan alamat IP ESP32 pada browser agar dashboard dan API memakai koneksi yang sama.</small></div>
+    <div class="api-config">
+      <label for="mqttUrl">Broker MQTT WebSocket</label>
+      <div class="input-row"><input id="mqttUrl" value="wss://broker.emqx.io:8084/mqtt" autocomplete="url"><button id="saveMqtt" class="btn btn-primary">Hubungkan</button></div>
+      <label for="mqttUser" style="margin-top:10px">Username (opsional)</label><input id="mqttUser" autocomplete="username" placeholder="Kosongkan jika broker publik">
+      <label for="mqttPass" style="margin-top:10px">Password (opsional)</label><input id="mqttPass" type="password" autocomplete="current-password" placeholder="Kosongkan jika broker publik">
+      <small>Dashboard terhubung melalui MQTT WebSocket. IP ESP32 tidak perlu dimasukkan. Topic bawaan: hidroponik/demo01.</small>
+    </div>
   </section>
 
   <nav class="tabs" aria-label="Menu dashboard">
@@ -150,5 +156,6 @@
   <footer>Hidro Capstone · ESP32 Sensor & Actuator Controller</footer>
 </main>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
 <script src="script.js"></script>
 </body></html>
